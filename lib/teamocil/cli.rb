@@ -30,6 +30,8 @@ module Teamocil
     def layout_file_path
       if layout = Teamocil.options[:layout]
         layout
+      elsif arguments.length == 0 and File.exists? ".teamocil.yml"
+        ".teamocil.yml"
       else
         File.join(root, "#{arguments.first}.yml")
       end
